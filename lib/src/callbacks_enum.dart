@@ -1,21 +1,7 @@
-enum TestType {
-  download,
-  upload,
-}
+enum TestType { download, upload }
 
-enum CallbacksEnum {
-  startDownLoadTesting,
-  startUploadTesting,
-}
+enum CallbacksEnum { startDownLoadTesting, startUploadTesting }
 
-enum ListenerEnum {
-  complete,
-  error,
-  progress,
-  cancel,
-}
+enum ListenerEnum { complete, error, progress, cancel }
 
-enum SpeedUnit {
-  kbps,
-  mbps,
-}
+enum SpeedUnit { kbps, mbps }

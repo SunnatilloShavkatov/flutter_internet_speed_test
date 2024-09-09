@@ -14,7 +14,9 @@ typedef ProgressCallback = void Function(
   SpeedUnit unit,
 );
 typedef ErrorCallback = void Function(
-    String errorMessage, String speedTestError);
+  String errorMessage,
+  String speedTestError,
+);
 typedef CancelCallback = void Function();
 
 abstract class FlutterInternetSpeedTestPlatform extends PlatformInterface {
@@ -51,15 +53,17 @@ abstract class FlutterInternetSpeedTestPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<CancelListening> startDownloadTesting(
-      {required DoneCallback onDone,
-      required ProgressCallback onProgress,
-      required ErrorCallback onError,
-      required CancelCallback onCancel,
-      required int fileSize,
-      required String testServer}) {
+  Future<CancelListening> startDownloadTesting({
+    required DoneCallback onDone,
+    required ProgressCallback onProgress,
+    required ErrorCallback onError,
+    required CancelCallback onCancel,
+    required int fileSize,
+    required String testServer,
+  }) {
     throw UnimplementedError(
-        'startDownloadTesting() has not been implemented.');
+      'startDownloadTesting() has not been implemented.',
+    );
   }
 
   Future<CancelListening> startUploadTesting({

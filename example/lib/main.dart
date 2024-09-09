@@ -7,7 +7,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -43,9 +43,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('FlutterInternetSpeedTest example'),
-        ),
+        appBar: AppBar(title: const Text('Internet Speed Test')),
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -64,12 +62,11 @@ class _MyAppState extends State<MyApp> {
                   Text('Download Rate: $_downloadRate $_unitText'),
                   if (_downloadCompletionTime > 0)
                     Text(
-                        'Time taken: ${(_downloadCompletionTime / 1000).toStringAsFixed(2)} sec(s)'),
+                      'Time taken: ${(_downloadCompletionTime / 1000).toStringAsFixed(2)} sec(s)',
+                    ),
                 ],
               ),
-              const SizedBox(
-                height: 32.0,
-              ),
+              const SizedBox(height: 32.0),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -84,17 +81,18 @@ class _MyAppState extends State<MyApp> {
                   Text('Upload Rate: $_uploadRate $_unitText'),
                   if (_uploadCompletionTime > 0)
                     Text(
-                        'Time taken: ${(_uploadCompletionTime / 1000).toStringAsFixed(2)} sec(s)'),
+                      'Time taken: ${(_uploadCompletionTime / 1000).toStringAsFixed(2)} sec(s)',
+                    ),
                 ],
               ),
-              const SizedBox(
-                height: 32.0,
-              ),
+              const SizedBox(height: 32.0),
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
-                child: Text(_isServerSelectionInProgress
-                    ? 'Selecting Server...'
-                    : 'IP: ${_ip ?? '--'} | ASP: ${_asn ?? '--'} | ISP: ${_isp ?? '--'}'),
+                child: Text(
+                  _isServerSelectionInProgress
+                      ? 'Selecting Server...'
+                      : 'IP: ${_ip ?? '--'} | ASP: ${_asn ?? '--'} | ISP: ${_isp ?? '--'}',
+                ),
               ),
               if (!_testInProgress) ...{
                 ElevatedButton(

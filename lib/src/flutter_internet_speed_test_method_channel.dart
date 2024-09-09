@@ -190,16 +190,20 @@ class MethodChannelFlutterInternetSpeedTest
   }
 
   @override
-  Future<CancelListening> startUploadTesting(
-      {required DoneCallback onDone,
-      required ProgressCallback onProgress,
-      required ErrorCallback onError,
-      required CancelCallback onCancel,
-      required int fileSize,
-      required String testServer}) async {
-    return await _startListening(Tuple4(onError, onProgress, onDone, onCancel),
-        CallbacksEnum.startUploadTesting, testServer,
-        fileSize: fileSize);
+  Future<CancelListening> startUploadTesting({
+    required DoneCallback onDone,
+    required ProgressCallback onProgress,
+    required ErrorCallback onError,
+    required CancelCallback onCancel,
+    required int fileSize,
+    required String testServer,
+  }) async {
+    return await _startListening(
+      Tuple4(onError, onProgress, onDone, onCancel),
+      CallbacksEnum.startUploadTesting,
+      testServer,
+      fileSize: fileSize,
+    );
   }
 
   @override
