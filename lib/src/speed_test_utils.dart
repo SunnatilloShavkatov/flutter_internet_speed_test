@@ -1,9 +1,7 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter_internet_speed_test/src/connectivity/network_info.dart';
+
+NetworkInfo networkInfo = NetworkInfoImpl(InternetConnectionChecker());
 
 Future<bool> isInternetAvailable() async {
-  final connectivity = Connectivity();
-  final connectivityResult = await connectivity.checkConnectivity();
-  return connectivityResult.contains(ConnectivityResult.mobile) ||
-      connectivityResult.contains(ConnectivityResult.wifi) ||
-      connectivityResult.contains(ConnectivityResult.ethernet);
+  return networkInfo.isConnected;
 }

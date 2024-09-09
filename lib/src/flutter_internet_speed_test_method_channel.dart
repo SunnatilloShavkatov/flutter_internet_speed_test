@@ -140,12 +140,13 @@ class MethodChannelFlutterInternetSpeedTest
   }
 
   Future<CancelListening> _startListening(
-      Tuple4<ErrorCallback, ProgressCallback, DoneCallback, CancelCallback>
-          callback,
-      CallbacksEnum callbacksEnum,
-      String testServer,
-      {Map<String, dynamic>? args,
-      int fileSize = 10000000}) async {
+    Tuple4<ErrorCallback, ProgressCallback, DoneCallback, CancelCallback>
+        callback,
+    CallbacksEnum callbacksEnum,
+    String testServer, {
+    Map<String, dynamic>? args,
+    int fileSize = 10000000,
+  }) async {
     _channel.setMethodCallHandler(_methodCallHandler);
     int currentListenerId = callbacksEnum.index;
     if (isLogEnabled) {
@@ -168,25 +169,24 @@ class MethodChannelFlutterInternetSpeedTest
   }
 
   Future<void> _toggleLog(bool value) async {
-    await _channel.invokeMethod(
-      "toggleLog",
-      {
-        'value': value,
-      },
-    );
+    await _channel.invokeMethod("toggleLog", {'value': value});
   }
 
   @override
-  Future<CancelListening> startDownloadTesting(
-      {required DoneCallback onDone,
-      required ProgressCallback onProgress,
-      required ErrorCallback onError,
-      required CancelCallback onCancel,
-      required fileSize,
-      required String testServer}) async {
-    return await _startListening(Tuple4(onError, onProgress, onDone, onCancel),
-        CallbacksEnum.startDownLoadTesting, testServer,
-        fileSize: fileSize);
+  Future<CancelListening> startDownloadTesting({
+    required DoneCallback onDone,
+    required ProgressCallback onProgress,
+    required ErrorCallback onError,
+    required CancelCallback onCancel,
+    required fileSize,
+    required String testServer,
+  }) async {
+    return await _startListening(
+      Tuple4(onError, onProgress, onDone, onCancel),
+      CallbacksEnum.startDownLoadTesting,
+      testServer,
+      fileSize: fileSize,
+    );
   }
 
   @override

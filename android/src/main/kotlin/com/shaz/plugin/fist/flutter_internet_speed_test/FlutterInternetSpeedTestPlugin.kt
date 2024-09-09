@@ -147,7 +147,7 @@ class FlutterInternetSpeedTestPlugin : FlutterPlugin, MethodCallHandler, Activit
                                     methodChannel.invokeMethod("callListener", argsMap)
                                 }
                             }
-                        }, testServer, fileSize)
+                        }, testServer)
                     }
                     "startUploadTesting" -> {
                         testUploadSpeed(object : TestListener {
@@ -240,7 +240,7 @@ class FlutterInternetSpeedTestPlugin : FlutterPlugin, MethodCallHandler, Activit
         logger.print("After Testing")
     }
 
-    private fun testDownloadSpeed(testListener: TestListener, testServer: String, fileSize: Int) {
+    private fun testDownloadSpeed(testListener: TestListener, testServer: String) {
         // add a listener to wait for speedtest completion and progress
         logger.print("Testing Testing")
         speedTestSocket.addSpeedTestListener(object : ISpeedTestListener {
